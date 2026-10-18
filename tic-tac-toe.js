@@ -6,6 +6,11 @@ INFO2180 Lab 3: Tic-Tac-Toe
 document.addEventListener("DOMContentLoaded", function () {
     const board = document.querySelector("#board");
     const status = document.querySelector("#status");
+    const newGameButton = Array.from(
+        document.querySelectorAll("button")
+    ).find(function (button) {
+        return button.textContent.trim() === "New Game";
+    });
     const squares = board.querySelectorAll("div");
     let currentPlayer = "X";
     const gameState = Array(9).fill("");
@@ -44,6 +49,21 @@ document.addEventListener("DOMContentLoaded", function () {
 // To Apply the square class to each game square.
     squares.forEach(function (square, index) {
         square.classList.add("square");
+
+// Exercise 5: Reset the game when New Game is clicked.
+    newGameButton.addEventListener("click", function () {
+        gameState.fill("");
+        currentPlayer = "X";
+        gameOver = false;
+
+        squares.forEach(function (square) {
+            square.textContent = "";
+            square.classList.remove("X", "O", "hover");
+        });
+
+        status.textContent = originalStatus;
+        status.classList.remove("you-won");
+    });
 
 // To highlight a square when the mouse enters it.
     square.addEventListener("mouseover", function () {
