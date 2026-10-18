@@ -10,11 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentPlayer = "X";
     const gameState = Array(9).fill("");
 
-    // To Apply the square class to each game square.
+// To Apply the square class to each game square.
     squares.forEach(function (square, index) {
         square.classList.add("square");
 
-    // Places an X or O when a square is clicked.
+// To highlight a square when the mouse enters it.
+    square.addEventListener("mouseover", function () {
+        square.classList.add("hover");
+    });
+
+// To remove the highlight when the mouse leaves the square.
+    square.addEventListener("mouseout", function () {
+        square.classList.remove("hover");
+    });
+
+// Places an X or O when a square is clicked.
     square.addEventListener("click", function () {
         if (gameState[index] !== "") {
             return;
