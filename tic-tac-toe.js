@@ -6,6 +6,7 @@ INFO2180 Lab 3: Tic-Tac-Toe
 document.addEventListener("DOMContentLoaded", function () {
     const board = document.querySelector("#board");
     const status = document.querySelector("#status");
+
     const newGameButton = Array.from(
         document.querySelectorAll("button")
     ).find(function (button) {
@@ -46,10 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return null;
     }
 
-// To Apply the square class to each game square.
-    squares.forEach(function (square, index) {
-        square.classList.add("square");
-
 // Exercise 5: Reset the game when New Game is clicked.
     newGameButton.addEventListener("click", function () {
         gameState.fill("");
@@ -65,26 +62,30 @@ document.addEventListener("DOMContentLoaded", function () {
         status.classList.remove("you-won");
     });
 
+    // To Apply the square class to each game square.
+    squares.forEach(function (square, index) {
+        square.classList.add("square");
+
 // To highlight a square when the mouse enters it.
-    square.addEventListener("mouseover", function () {
-        square.classList.add("hover");
-    });
+        square.addEventListener("mouseover", function () {
+            square.classList.add("hover");
+        });
 
 // To remove the highlight when the mouse leaves the square.
-    square.addEventListener("mouseout", function () {
-        square.classList.remove("hover");
-    });
+        square.addEventListener("mouseout", function () {
+            square.classList.remove("hover");
+        });
 
 // Exercise 2 and Exercise 4: Handle moves and check for a winner.
-    square.addEventListener("click", function () {
+        square.addEventListener("click", function () {
 // Exercise 6: Prevent changing an occupied square or making moves after the game has ended.
-    if (
-        gameOver ||
-        square.textContent.trim() !== "" ||
-        gameState[index] !== ""
-    ) {
-        return;
-    }
+        if (
+            gameOver ||
+            square.textContent.trim() !== "" ||
+            gameState[index] !== ""
+        ) {
+            return;
+        }
 
         square.textContent = currentPlayer;
         square.classList.add(currentPlayer);
