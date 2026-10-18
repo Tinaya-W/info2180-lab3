@@ -77,9 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Exercise 2 and Exercise 4: Handle moves and check for a winner.
     square.addEventListener("click", function () {
-        if (gameOver || gameState[index] !== "") {
-            return;
-        }
+// Exercise 6: Prevent changing an occupied square or making moves after the game has ended.
+    if (
+        gameOver ||
+        square.textContent.trim() !== "" ||
+        gameState[index] !== ""
+    ) {
+        return;
+    }
 
         square.textContent = currentPlayer;
         square.classList.add(currentPlayer);
